@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Purchase Order Details</title>
+</head>
+<body><div class="container">
+    <div class="jumbotron">
+        <div class="row">
+            <div class="col-md-4">                
+                <h1>Purchase Order Details</h1>
+                <ul>
+                    {% for order in po_details %}
+                    <li>
+                        <h2>PO Number: {{ order.po_number }}</h2>
+                        <p>Vendor: {{ order.vendor.vendor_name }}</p>
+                        <p>Order Date: {{ order.order_date }}</p>
+                        <p>Delivery Date : {{ order.delivery_date }}</p>
+                        <p>Items : {{ order.items }}</p>
+                        <p>Quality : {{ order.quantity }}</p>
+                        <p>Status : {{ order.status }}</p>
+                        <p>Quality_rating : {{ order.quality_rating }}</p>
+                        <p>Issue_date : {{ order.issue_date }}</p>
+                        <p>Acknowledment_date: {{ order.acknowledment_date }}</p>
+                    <!-- Other PO details -->
+                    </li>
+                    {% endfor %}
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container1">
+    <div class="jumbotron">
+        <div class="row">
+            <div class="col-md-4">
+                <h1>Vendor Form</h1>
+                <form action="" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ form1.as_p }}
+                    <input type="submit" value="POST" class="btn btn-warning">
+                </form>
+            </div>
+        </div>
+</div>
+    
+</body>
+</html>

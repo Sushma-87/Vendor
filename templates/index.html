@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <title>Dashboard</title>
+    <style>
+        .container{
+            
+            margin-left: 100px;
+        }
+        .container1{
+            margin-top: -430px;
+            margin-left: 500px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="jumbotron">
+            <div class="row">
+                <div class="col-md-4">
+                    <h2>Vendor details</h2>
+                    <h4>Performance Metrics for Vendors</h4>
+                    <!-- <h1>vendor details : <a href="{% url 'index' %}"></a></h1> -->
+                    
+                    <ul>
+                        {% for vendor in vendors %}
+                        <li>
+                            <h3>vendor name : {{ vendor.vendor_name }}</h3>
+                            <p>Contact_details : {{ vendor.contact_details }}</p>
+                            <p>Address: {{ vendor.address }}</p>
+                            <p>Vendor_code: {{ vendor.vendor_code}}</p>
+                            <p>On-Time Delivery Rate: {{ vendor.on_time_delivery_rate }}</p>
+                            <p>Quality Rating Average: {{ vendor.quality_rating_avg }}</p>
+                            <p>Average Response Time: {{ vendor.average_response_time }}</p>
+                            <p>Fulfillment Rate: {{ vendor.fulfillment_rate }}</p>
+                            
+                        </li>
+                        {% endfor %}
+                    </ul>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container1">
+        <div class="jumbotron">
+            <div class="row">
+                <div class="col-md-4">
+                    <h1>Vendor Form</h1>
+                    <form action="" method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <input type="submit" value="POST" class="btn btn-warning">
+                    </form>
+                </div>
+            </div>
+    </div>
+</div>
+</body>
+</html>
